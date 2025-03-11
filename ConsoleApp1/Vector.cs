@@ -24,9 +24,13 @@ namespace ConsoleApp1
             Coordinates_();
             Length_();
         }
-        private Vector(Point coordinate)
+        public Vector(Point coordinate)
         {
             this.coordinate = coordinate;
+        }
+        public Vector()
+        {
+
         }
         private void Coordinates_()
         {
