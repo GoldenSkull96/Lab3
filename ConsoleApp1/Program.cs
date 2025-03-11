@@ -18,92 +18,34 @@ using ConsoleApp1;
     }
     static Vector Coordinates(string name)
     {
-        int x = 0, y = 0, z = 0;
         Console.WriteLine($"start {name}");
-        Console.Write("x: ");
-        bool correct = false;
-        while (!correct)
-        {
-            if (int.TryParse(Console.ReadLine(), out x))
-            {
-                correct = true;
-            }
-            else
-            {
-                Console.WriteLine("введите корректное значение");
-            }
-        }
-        correct = false;
-        Console.Write("y: ");
-        while (!correct)
-        {
-            if (int.TryParse(Console.ReadLine(), out y))
-            {
-                correct = true;
-            }
-            else
-            {
-                Console.WriteLine("введите корректное значение");
-            }
-        }
-        correct = false;
-        Console.Write("z: ");
-        while (!correct)
-        {
-            if (int.TryParse(Console.ReadLine(), out z))
-            {
-                correct = true;
-            }
-            else
-            {
-                Console.WriteLine("введите корректное значение");
-            }
-        }
-        correct = false;
+        int x = input("x");
+        int y = input("y");
+        int z = input("z");
         Point Start = new Point(x, y, z);
         Console.Clear();
         Console.WriteLine($"end {name}");
-        Console.Write("x: ");
-        while (!correct)
-        {
-            if (int.TryParse(Console.ReadLine(), out x))
-            {
-                correct = true;
-            }
-            else
-            {
-                Console.WriteLine("введите корректное значение");
-            }
-        }
-        correct = false;
-        Console.Write("y: ");
-        while (!correct)
-        {
-            if (int.TryParse(Console.ReadLine(), out y))
-            {
-                correct = true;
-            }
-            else
-            {
-                Console.WriteLine("введите корректное значение");
-            }
-        }
-        correct = false;
-        Console.Write("z: ");
-        while (!correct)
-        {
-            if (int.TryParse(Console.ReadLine(), out z))
-            {
-                correct = true;
-            }
-            else
-            {
-                Console.WriteLine("введите корректное значение");
-            }
-        }
-        correct = false;
+        x = input("x");
+        y = input("y");
+        z = input("z");
         Point End = new Point(x, y, z);
         Console.Clear();
         return new Vector(Start, End);
+    }
+    static int input(string name)
+    {
+        Console.Write($"{name}: ");
+        while (true)
+        {
+            if (int.TryParse(Console.ReadLine(), out int n))
+            {
+                return n;
+            }
+            else
+            {
+                Console.WriteLine("введите корректное значение в формате int");
+            }
+        }
+        return 0;
     }
 }
