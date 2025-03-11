@@ -41,15 +41,15 @@ using ConsoleApp1;
         jsonFile.Close();
         File.WriteAllText(fullpath, json);
     }
-    static void Coordinates(ref int[][] coordinates)
+    Vector Coordinates(string name)
     {
-        Console.WriteLine("start");
-        coordinates[0] = new int[3];
+        int x = 0, y = 0, z = 0;
+        Console.WriteLine($"start {name}");
         Console.Write("x: ");
         bool correct = false;
         while (!correct)
         {
-            if (int.TryParse(Console.ReadLine(), out coordinates[0][0]))
+            if (int.TryParse(Console.ReadLine(), out x))
             {
                 correct = true;
             }
@@ -62,7 +62,7 @@ using ConsoleApp1;
         Console.Write("y: ");
         while (!correct)
         {
-            if (int.TryParse(Console.ReadLine(), out coordinates[0][1]))
+            if (int.TryParse(Console.ReadLine(), out y))
             {
                 correct = true;
             }
@@ -75,7 +75,7 @@ using ConsoleApp1;
         Console.Write("z: ");
         while (!correct)
         {
-            if (int.TryParse(Console.ReadLine(), out coordinates[0][2]))
+            if (int.TryParse(Console.ReadLine(), out z))
             {
                 correct = true;
             }
@@ -85,13 +85,13 @@ using ConsoleApp1;
             }
         }
         correct = false;
+        Point Start = new Point(x, y, z);
         Console.Clear();
-        Console.WriteLine("end");
+        Console.WriteLine($"end {name}");
         Console.Write("x: ");
-        coordinates[1] = new int[3];
         while (!correct)
         {
-            if (int.TryParse(Console.ReadLine(), out coordinates[1][0]))
+            if (int.TryParse(Console.ReadLine(), out x))
             {
                 correct = true;
             }
@@ -104,7 +104,7 @@ using ConsoleApp1;
         Console.Write("y: ");
         while (!correct)
         {
-            if (int.TryParse(Console.ReadLine(), out coordinates[1][1]))
+            if (int.TryParse(Console.ReadLine(), out y))
             {
                 correct = true;
             }
@@ -117,7 +117,7 @@ using ConsoleApp1;
         Console.Write("z: ");
         while (!correct)
         {
-            if (int.TryParse(Console.ReadLine(), out coordinates[1][2]))
+            if (int.TryParse(Console.ReadLine(), out z))
             {
                 correct = true;
             }
@@ -127,7 +127,9 @@ using ConsoleApp1;
             }
         }
         correct = false;
+        Point End = new Point(x, y, z);
         Console.Clear();
+        return new Vector(Start, End);
     }
     static int[] SumPlus(int[] coordinate_a, int[] coordinate_b)
     {
