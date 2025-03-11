@@ -8,12 +8,9 @@ namespace ConsoleApp1
 {
     internal class Point
     {
-        private int x;
-        private int y;
-        private int z;
-        public int X { get; }
-        public int Y { get; }
-        public int Z { get; }
+        public readonly int x;
+        public readonly int y;
+        public readonly int z;
         public Point(int x, int y, int z)
         {
             this.x = x;

@@ -10,11 +10,11 @@ namespace ConsoleApp1
     {
         private Point start;
         private Point end;
-        private Point coordinates;
+        private Point coordinate;
         private double length;
         public Point Start { get { return start; } }
         public Point End { get { return end; } }
-        public Point Coordinates { get { return coordinates; } }
+        public Point Coordinate { get { return coordinate; } }
         public double Length { get { return length; } }
 
         public Vector(Point start, Point end)
@@ -24,15 +24,34 @@ namespace ConsoleApp1
             Coordinates_();
             Length_();
         }
+        private Vector(Point coordinate)
+        {
+            this.coordinate = coordinate;
+        }
         private void Coordinates_()
         {
-            this.coordinates = new Point(End.X - Start.X, End.Y - Start.Y, End.Z - Start.Z);
+            this.coordinate = new Point(End.x - Start.x, End.y - Start.y, End.z - Start.z);
         }
         private void Length_()
         {
-            this.length = Math.Sqrt(Math.Pow(Coordinates.X, 2) + Math.Pow(Coordinates.Y, 2) + Math.Pow(Coordinates.Z, 2));
+            this.length = Math.Sqrt(Math.Pow(Coordinate.x, 2) + Math.Pow(Coordinate.y, 2) + Math.Pow(Coordinate.z, 2));
         }
-
+        public Vector Sum(Vector vector)
+        {
+            return new Vector(new Point(coordinate.x + vector.Coordinate.x, coordinate.y + vector.Coordinate.y, coordinate.z + vector.Coordinate.z));
+        }
+        public Vector Minus(Vector vector)
+        {
+            return new Vector(new Point(coordinate.x - vector.Coordinate.x, coordinate.y - vector.Coordinate.y, coordinate.z - vector.Coordinate.z));
+        }
+        public int Mult(Vector vector)
+        {
+            return coordinate.y * vector.Coordinate.y + coordinate.y * vector.Coordinate.y + coordinate.z * vector.Coordinate.z; 
+        }
+        public double Cos(Vector vector)
+        {
+            return Mult(vector)/length * vector.Length;
+        }
     }
 }
 
