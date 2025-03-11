@@ -46,6 +46,5 @@ using ConsoleApp1;
                 Console.WriteLine("введите корректное значение в формате int");
             }
         }
-        return 0;
     }
 }
